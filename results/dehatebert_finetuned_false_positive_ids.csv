@@ -1,0 +1,57 @@
+id,label,functionality,target_ident,templ_id,hate_score,prediction
+1029,0,slur_homonym_nh,gay people,139,0.5186039805412292,1
+1034,0,slur_homonym_nh,gay people,144,0.5121049880981445,1
+1035,0,slur_homonym_nh,gay people,145,0.5446094870567322,1
+1093,0,slur_reclaimed_nh,gay people,203,0.6391152143478394,1
+1100,0,slur_reclaimed_nh,gay people,210,0.725144624710083,1
+1101,0,slur_reclaimed_nh,gay people,211,0.5025811791419983,1
+1102,0,slur_reclaimed_nh,gay people,212,0.5064199566841125,1
+1308,0,profanity_nh,,298,0.8190988898277283,1
+1309,0,profanity_nh,,299,0.7581047415733337,1
+1310,0,profanity_nh,,300,0.527498185634613,1
+1311,0,profanity_nh,,301,0.6771290898323059,1
+1362,0,profanity_nh,,352,0.6847236156463623,1
+1363,0,profanity_nh,,353,0.5212082266807556,1
+1365,0,profanity_nh,,355,0.6759858727455139,1
+1366,0,profanity_nh,,356,0.7995798587799072,1
+1834,0,negate_neg_nh,women,428,0.8939168453216553,1
+1835,0,negate_neg_nh,trans people,428,0.8249238729476929,1
+1836,0,negate_neg_nh,gay people,428,0.8812713027000427,1
+1837,0,negate_neg_nh,black people,428,0.8769686222076416,1
+1838,0,negate_neg_nh,disabled people,428,0.8753202557563782,1
+1839,0,negate_neg_nh,Muslims,428,0.9026944041252136,1
+1840,0,negate_neg_nh,immigrants,428,0.8874421119689941,1
+2597,0,counter_quote_nh,women,537,0.8046823740005493,1
+2598,0,counter_quote_nh,trans people,537,0.6754620671272278,1
+2599,0,counter_quote_nh,gay people,537,0.8378285765647888,1
+2600,0,counter_quote_nh,black people,537,0.8306213617324829,1
+2601,0,counter_quote_nh,disabled people,537,0.8535680174827576,1
+2602,0,counter_quote_nh,Muslims,537,0.8347232341766357,1
+2603,0,counter_quote_nh,immigrants,537,0.8460046052932739,1
+2665,0,counter_quote_nh,gay people,546,0.5439014434814453,1
+2666,0,counter_quote_nh,gay people,546,0.6342912912368774,1
+2668,0,counter_quote_nh,black people,546,0.8916173577308655,1
+2669,0,counter_quote_nh,black people,546,0.9074051976203918,1
+2673,0,counter_quote_nh,Muslims,546,0.8825533986091614,1
+2675,0,counter_quote_nh,Muslims,546,0.7495754361152649,1
+2676,0,counter_quote_nh,immigrants,546,0.6370658278465271,1
+2677,0,counter_quote_nh,immigrants,546,0.8364154696464539,1
+2686,0,counter_quote_nh,black people,547,0.8851780891418457,1
+2687,0,counter_quote_nh,black people,547,0.8807341456413269,1
+2691,0,counter_quote_nh,Muslims,547,0.8665440082550049,1
+2704,0,counter_quote_nh,black people,548,0.8719032406806946,1
+2705,0,counter_quote_nh,black people,548,0.8772778511047363,1
+2709,0,counter_quote_nh,Muslims,548,0.8217088580131531,1
+2713,0,counter_quote_nh,immigrants,548,0.7038834095001221,1
+2790,0,counter_ref_nh,immigrants,559,0.5529071092605591,1
+2882,0,counter_ref_nh,Muslims,568,0.5012814402580261,1
+2935,0,target_obj_nh,,599,0.9213114380836487,1
+2953,0,target_obj_nh,,617,0.5086119174957275,1
+2995,0,target_indiv_nh,,659,0.9325746893882751,1
+2997,0,target_indiv_nh,,661,0.9115691781044006,1
+3032,0,target_indiv_nh,,696,0.8900389075279236,1
+3037,0,target_indiv_nh,,701,0.592580258846283,1
+3060,0,target_group_nh,,724,0.8618605732917786,1
+3064,0,target_group_nh,,728,0.9366311430931091,1
+3093,0,target_group_nh,,757,0.5461570620536804,1
+3095,0,target_group_nh,,759,0.5397706031799316,1

@@ -1,0 +1,35 @@
+{
+  "train": {
+    "official_ids": 15383,
+    "excluded_no_majority": 0,
+    "excluded_empty": 0,
+    "excluded_conflicting_rows": 19,
+    "removed_within_split_duplicates": 13,
+    "removed_cross_split_or_hatecheck_overlap": 7,
+    "final_n": 15344
+  },
+  "val": {
+    "official_ids": 1922,
+    "excluded_no_majority": 0,
+    "excluded_empty": 0,
+    "excluded_conflicting_rows": 0,
+    "removed_within_split_duplicates": 0,
+    "removed_cross_split_or_hatecheck_overlap": 1,
+    "final_n": 1921
+  },
+  "test": {
+    "official_ids": 1924,
+    "excluded_no_majority": 0,
+    "excluded_empty": 0,
+    "excluded_conflicting_rows": 0,
+    "removed_within_split_duplicates": 1,
+    "removed_cross_split_or_hatecheck_overlap": 0,
+    "final_n": 1923
+  },
+  "hatecheck": {
+    "n": 3728,
+    "functionalities": 29,
+    "used_for_training": false,
+    "used_for_checkpoint_selection": false
+  }
+}

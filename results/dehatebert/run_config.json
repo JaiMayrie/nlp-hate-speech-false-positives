@@ -1,0 +1,48 @@
+{
+  "started_utc": "2026-10-31T02:05:31.299877+00:00",
+  "model_id": "Hate-speech-CNERG/dehatebert-mono-english",
+  "revision": "25d0e4d9122d2a5c283e07405a325e3dfd4a73b3",
+  "config": {
+    "seed": 42,
+    "epochs": 2,
+    "learning_rate": 2e-05,
+    "batch_size": 8,
+    "eval_batch_size": 16,
+    "gradient_accumulation": 2,
+    "max_length": 128,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.1
+  },
+  "environment": {
+    "python": "3.13.16",
+    "libraries": {
+      "torch": "2.11.0+cu130",
+      "transformers": "4.57.3",
+      "huggingface_hub": "0.36.2",
+      "numpy": "2.1.3",
+      "pandas": "2.2.3",
+      "scikit-learn": "1.6.1",
+      "requests": "2.32.4"
+    },
+    "cuda": true,
+    "gpu": "Tesla T4"
+  },
+  "train_n": 15344,
+  "validation_n": 1921,
+  "hatecheck_n": 3728,
+  "condition": "continued full-parameter fine-tuning",
+  "selection": "highest HateXplain validation macro-F1 among the two trained epochs; earlier epoch wins ties",
+  "caveat": "Released checkpoints may have seen HateXplain previously; validation is not claimed independent of upstream training.",
+  "id2label": {
+    "0": "NON_HATE",
+    "1": "HATE"
+  },
+  "hate_index": 1,
+  "truncated_examples": {
+    "train": 1,
+    "val": 0,
+    "hatecheck": 0
+  },
+  "trainable_parameters": 167357954,
+  "selected_epoch": 2
+}

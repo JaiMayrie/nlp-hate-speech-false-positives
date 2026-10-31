@@ -1,0 +1,20 @@
+{
+  "created_utc": "2026-10-31T02:03:48.789700+00:00",
+  "sources": {
+    "hatexplain": {
+      "url": "https://raw.githubusercontent.com/hate-alert/HateXplain/01d742279dac941981f53806154481c0e15ee686/Data/dataset.json",
+      "revision": "01d742279dac941981f53806154481c0e15ee686",
+      "sha256": "63bb3340fee0ec469b09690d04cb68f7c187787dd8b83807f071892c084967fb"
+    },
+    "hatexplain_splits": {
+      "url": "https://raw.githubusercontent.com/hate-alert/HateXplain/01d742279dac941981f53806154481c0e15ee686/Data/post_id_divisions.json",
+      "revision": "01d742279dac941981f53806154481c0e15ee686",
+      "sha256": "c2fb0d89862e7897b11ea3e9380753f15a793482b4b70ad0532dfb1212212835"
+    },
+    "hatecheck": {
+      "url": "https://raw.githubusercontent.com/paul-rottger/hatecheck-data/3490854f969111a32c55c05f0d9788b471337fa9/test_suite_cases.csv",
+      "revision": "3490854f969111a32c55c05f0d9788b471337fa9",
+      "sha256": "ecf0dc1e93fccc90b6f880e632b19e635c0f0a68b3157915a9e20b6938f121cf"
+    }
+  }
+}

@@ -1,0 +1,161 @@
+id,label,functionality,target_ident,templ_id,hate_score,prediction
+1021,0,slur_homonym_nh,gay people,131,0.6446068286895752,1
+1022,0,slur_homonym_nh,gay people,132,0.665224015712738,1
+1026,0,slur_homonym_nh,gay people,136,0.9097298383712769,1
+1027,0,slur_homonym_nh,gay people,137,0.9042432904243469,1
+1028,0,slur_homonym_nh,gay people,138,0.9088194370269775,1
+1029,0,slur_homonym_nh,gay people,139,0.9120131134986877,1
+1030,0,slur_homonym_nh,gay people,140,0.901422381401062,1
+1031,0,slur_homonym_nh,gay people,141,0.9075836539268494,1
+1032,0,slur_homonym_nh,gay people,142,0.9015434980392456,1
+1033,0,slur_homonym_nh,gay people,143,0.9015586972236633,1
+1034,0,slur_homonym_nh,gay people,144,0.9007411599159241,1
+1035,0,slur_homonym_nh,gay people,145,0.8992022275924683,1
+1036,0,slur_homonym_nh,gay people,146,0.8642796277999878,1
+1037,0,slur_homonym_nh,gay people,147,0.7833279371261597,1
+1038,0,slur_homonym_nh,gay people,148,0.771832287311554,1
+1039,0,slur_homonym_nh,gay people,149,0.8265491127967834,1
+1041,0,slur_homonym_nh,women,151,0.7959326505661011,1
+1042,0,slur_homonym_nh,women,152,0.7776329517364502,1
+1043,0,slur_homonym_nh,women,153,0.6956045627593994,1
+1044,0,slur_homonym_nh,women,154,0.7922646999359131,1
+1045,0,slur_homonym_nh,women,155,0.7605473399162292,1
+1046,0,slur_homonym_nh,women,156,0.8614088892936707,1
+1047,0,slur_homonym_nh,women,157,0.8690944314002991,1
+1049,0,slur_homonym_nh,women,159,0.8160902261734009,1
+1050,0,slur_homonym_nh,women,160,0.8817907571792603,1
+1056,0,slur_reclaimed_nh,black people,166,0.899041473865509,1
+1061,0,slur_reclaimed_nh,black people,171,0.8750765323638916,1
+1063,0,slur_reclaimed_nh,black people,173,0.7662804126739502,1
+1064,0,slur_reclaimed_nh,black people,174,0.8484734892845154,1
+1065,0,slur_reclaimed_nh,black people,175,0.898878276348114,1
+1068,0,slur_reclaimed_nh,black people,178,0.7702264785766602,1
+1077,0,slur_reclaimed_nh,gay people,187,0.8740296363830566,1
+1078,0,slur_reclaimed_nh,gay people,188,0.6159948110580444,1
+1079,0,slur_reclaimed_nh,gay people,189,0.8149773478507996,1
+1080,0,slur_reclaimed_nh,gay people,190,0.8841703534126282,1
+1085,0,slur_reclaimed_nh,gay people,195,0.9100515842437744,1
+1086,0,slur_reclaimed_nh,gay people,196,0.9058017134666443,1
+1087,0,slur_reclaimed_nh,gay people,197,0.9131566882133484,1
+1088,0,slur_reclaimed_nh,gay people,198,0.8919774293899536,1
+1089,0,slur_reclaimed_nh,gay people,199,0.80782550573349,1
+1090,0,slur_reclaimed_nh,gay people,200,0.8514600992202759,1
+1091,0,slur_reclaimed_nh,gay people,201,0.9066178798675537,1
+1092,0,slur_reclaimed_nh,gay people,202,0.8901069164276123,1
+1093,0,slur_reclaimed_nh,gay people,203,0.912596583366394,1
+1094,0,slur_reclaimed_nh,gay people,204,0.7524541616439819,1
+1095,0,slur_reclaimed_nh,gay people,205,0.8969281911849976,1
+1096,0,slur_reclaimed_nh,gay people,206,0.8180530667304993,1
+1097,0,slur_reclaimed_nh,gay people,207,0.9101805686950684,1
+1098,0,slur_reclaimed_nh,gay people,208,0.9046062231063843,1
+1099,0,slur_reclaimed_nh,gay people,209,0.9145715236663818,1
+1100,0,slur_reclaimed_nh,gay people,210,0.9089606404304504,1
+1101,0,slur_reclaimed_nh,gay people,211,0.9138046503067017,1
+1102,0,slur_reclaimed_nh,gay people,212,0.9044074416160583,1
+1103,0,slur_reclaimed_nh,gay people,213,0.904391884803772,1
+1104,0,slur_reclaimed_nh,gay people,214,0.9091825485229492,1
+1105,0,slur_reclaimed_nh,gay people,215,0.9052626490592957,1
+1106,0,slur_reclaimed_nh,gay people,216,0.8990033864974976,1
+1108,0,slur_reclaimed_nh,gay people,218,0.8364835977554321,1
+1109,0,slur_reclaimed_nh,gay people,219,0.9047425985336304,1
+1110,0,slur_reclaimed_nh,gay people,220,0.9080039262771606,1
+1113,0,slur_reclaimed_nh,gay people,223,0.9081336855888367,1
+1114,0,slur_reclaimed_nh,gay people,224,0.8951867818832397,1
+1115,0,slur_reclaimed_nh,gay people,225,0.901248574256897,1
+1116,0,slur_reclaimed_nh,gay people,226,0.8640735745429993,1
+1117,0,slur_reclaimed_nh,women,227,0.8156861662864685,1
+1118,0,slur_reclaimed_nh,women,228,0.776548445224762,1
+1119,0,slur_reclaimed_nh,women,229,0.7618414759635925,1
+1120,0,slur_reclaimed_nh,women,230,0.5188238024711609,1
+1122,0,slur_reclaimed_nh,women,232,0.6571543216705322,1
+1123,0,slur_reclaimed_nh,women,233,0.62577885389328,1
+1124,0,slur_reclaimed_nh,women,234,0.6336856484413147,1
+1125,0,slur_reclaimed_nh,women,235,0.7174838781356812,1
+1126,0,slur_reclaimed_nh,women,236,0.8135882019996643,1
+1127,0,slur_reclaimed_nh,women,237,0.6321163177490234,1
+1128,0,slur_reclaimed_nh,women,238,0.8052687644958496,1
+1129,0,slur_reclaimed_nh,women,239,0.8208915591239929,1
+1131,0,slur_reclaimed_nh,women,241,0.7502496838569641,1
+1365,0,profanity_nh,,355,0.5463336706161499,1
+1366,0,profanity_nh,,356,0.6128039360046387,1
+1793,0,negate_neg_nh,trans people,422,0.5217294692993164,1
+1798,0,negate_neg_nh,immigrants,422,0.7042965292930603,1
+1827,0,negate_neg_nh,women,427,0.536394476890564,1
+1833,0,negate_neg_nh,immigrants,427,0.7535567283630371,1
+1834,0,negate_neg_nh,women,428,0.8609650731086731,1
+1835,0,negate_neg_nh,trans people,428,0.7406894564628601,1
+1836,0,negate_neg_nh,gay people,428,0.820723295211792,1
+1837,0,negate_neg_nh,black people,428,0.8506348729133606,1
+1838,0,negate_neg_nh,disabled people,428,0.8051176071166992,1
+1839,0,negate_neg_nh,Muslims,428,0.8811119794845581,1
+1840,0,negate_neg_nh,immigrants,428,0.8792983889579773,1
+1862,0,negate_neg_nh,women,432,0.6912558078765869,1
+1868,0,negate_neg_nh,immigrants,432,0.8735401630401611,1
+1889,0,negate_neg_nh,immigrants,435,0.8862515687942505,1
+1904,0,negate_neg_nh,women,438,0.771651029586792,1
+1917,0,negate_neg_nh,immigrants,439,0.8338635563850403,1
+2260,0,ident_neutral_nh,immigrants,488,0.6239765882492065,1
+2379,0,ident_pos_nh,immigrants,505,0.7779741287231445,1
+2407,0,ident_pos_nh,immigrants,509,0.7469938397407532,1
+2415,0,ident_pos_nh,women,511,0.5368614792823792,1
+2421,0,ident_pos_nh,immigrants,511,0.8294715285301208,1
+2498,0,ident_pos_nh,immigrants,522,0.8118184208869934,1
+2535,0,ident_pos_nh,trans people,528,0.8311353325843811,1
+2539,0,ident_pos_nh,Muslims,528,0.524544358253479,1
+2540,0,ident_pos_nh,immigrants,528,0.8775122165679932,1
+2554,0,ident_pos_nh,immigrants,530,0.6488199234008789,1
+2563,0,counter_quote_nh,trans people,532,0.518380880355835,1
+2569,0,counter_quote_nh,women,533,0.5686315894126892,1
+2570,0,counter_quote_nh,trans people,533,0.6524423360824585,1
+2575,0,counter_quote_nh,immigrants,533,0.792081892490387,1
+2603,0,counter_quote_nh,immigrants,537,0.811227023601532,1
+2665,0,counter_quote_nh,gay people,546,0.8963263630867004,1
+2666,0,counter_quote_nh,gay people,546,0.8916149735450745,1
+2668,0,counter_quote_nh,black people,546,0.8981409668922424,1
+2677,0,counter_quote_nh,immigrants,546,0.7289063930511475,1
+2683,0,counter_quote_nh,gay people,547,0.8972698450088501,1
+2684,0,counter_quote_nh,gay people,547,0.8805487155914307,1
+2686,0,counter_quote_nh,black people,547,0.9007355570793152,1
+2701,0,counter_quote_nh,gay people,548,0.8789838552474976,1
+2702,0,counter_quote_nh,gay people,548,0.8625537753105164,1
+2704,0,counter_quote_nh,black people,548,0.8711841702461243,1
+2734,0,counter_quote_nh,immigrants,551,0.6915580034255981,1
+2741,0,counter_ref_nh,immigrants,552,0.7682134509086609,1
+2776,0,counter_ref_nh,immigrants,557,0.7233884930610657,1
+2784,0,counter_ref_nh,women,559,0.8255289793014526,1
+2785,0,counter_ref_nh,trans people,559,0.7613838911056519,1
+2786,0,counter_ref_nh,gay people,559,0.6498907208442688,1
+2787,0,counter_ref_nh,black people,559,0.7789103388786316,1
+2790,0,counter_ref_nh,immigrants,559,0.882644772529602,1
+2799,0,counter_ref_nh,trans people,561,0.7076666951179504,1
+2804,0,counter_ref_nh,immigrants,561,0.8614710569381714,1
+2838,0,counter_ref_nh,gay people,566,0.6591956615447998,1
+2839,0,counter_ref_nh,gay people,566,0.7229723930358887,1
+2841,0,counter_ref_nh,black people,566,0.7736065983772278,1
+2874,0,counter_ref_nh,gay people,568,0.864408016204834,1
+2875,0,counter_ref_nh,gay people,568,0.8577451109886169,1
+2877,0,counter_ref_nh,black people,568,0.881645679473877,1
+2893,0,counter_ref_nh,immigrants,569,0.6238692998886108,1
+2923,0,target_obj_nh,,587,0.8524171113967896,1
+2935,0,target_obj_nh,,599,0.8912209272384644,1
+2937,0,target_obj_nh,,601,0.8438673615455627,1
+2945,0,target_obj_nh,,609,0.68726646900177,1
+2971,0,target_obj_nh,,635,0.575085461139679,1
+2984,0,target_indiv_nh,,648,0.8789368271827698,1
+2995,0,target_indiv_nh,,659,0.9090327620506287,1
+2997,0,target_indiv_nh,,661,0.8947895169258118,1
+3032,0,target_indiv_nh,,696,0.7985323071479797,1
+3038,0,target_group_nh,,702,0.682074785232544,1
+3052,0,target_group_nh,,716,0.6884340643882751,1
+3053,0,target_group_nh,,717,0.8789368271827698,1
+3055,0,target_group_nh,,719,0.5278185606002808,1
+3060,0,target_group_nh,,724,0.8501722812652588,1
+3061,0,target_group_nh,,725,0.6235557198524475,1
+3062,0,target_group_nh,,726,0.84963458776474,1
+3064,0,target_group_nh,,728,0.9008049368858337,1
+3065,0,target_group_nh,,729,0.8638713359832764,1
+3074,0,target_group_nh,,738,0.7370272874832153,1
+3080,0,target_group_nh,,744,0.6904945373535156,1
+3093,0,target_group_nh,,757,0.7653075456619263,1
+3095,0,target_group_nh,,759,0.6437025666236877,1
+3100,0,target_group_nh,,764,0.7700855135917664,1

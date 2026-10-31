@@ -1,0 +1,5 @@
+dataset,split,n,non_hate,hate
+HateXplain,train,15344,10601,4743
+HateXplain,val,1921,1328,593
+HateXplain,test,1923,1329,594
+HateCheck,evaluation,3728,1165,2563
