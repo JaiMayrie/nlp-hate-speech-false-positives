@@ -1,0 +1,24 @@
+SYNTHETIC UNIT-TEST LOG ONLY — NOT MODEL PERFORMANCE
+The four-row score table below is a test fixture, NOT a HateCheck experiment.
+
+test_absent_denominator_is_not_zero (test_project.LogicTests.test_absent_denominator_is_not_zero) ... ok
+test_data_split_filters (test_project.LogicTests.test_data_split_filters) ... ok
+test_error_export_contains_ids_not_text (test_project.LogicTests.test_error_export_contains_ids_not_text) ... ok
+test_export_excludes_raw_and_weights (test_project.LogicTests.test_export_excludes_raw_and_weights) ... ok
+test_invalid_scores_rejected (test_project.LogicTests.test_invalid_scores_rejected) ... ok
+test_label_order_verified (test_project.LogicTests.test_label_order_verified) ... ok
+test_metrics_known_confusion (test_project.LogicTests.test_metrics_known_confusion) ... ok
+test_normalization_is_for_matching (test_project.LogicTests.test_normalization_is_for_matching) ... ok
+test_original_three_way_vote (test_project.LogicTests.test_original_three_way_vote) ... ok
+test_parse_majority_no_binary_tie_shortcut (test_project.LogicTests.test_parse_majority_no_binary_tie_shortcut) ... ok
+test_threshold_direction (test_project.LogicTests.test_threshold_direction) ... ok
+test_unknown_annotation_rejected (test_project.LogicTests.test_unknown_annotation_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.084s
+
+OK
+     model condition  n  accuracy  macro_f1    fpr    fnr
+dehatebert  released  4    0.5000    0.5000 0.5000 0.5000
+No model measurements yet. A missing result is not a score of zero.
+Saved Jaida_Update1_Results_20261030_232640.zip. Raw texts and large model weights are not included.
