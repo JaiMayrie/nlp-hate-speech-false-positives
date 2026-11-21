@@ -1,0 +1,39 @@
+{
+  "analysis": "Update 2 post-hoc analysis of Update 1 saved predictions; no new training or inference",
+  "created_utc": "2026-11-17T22:05:58.650160+00:00",
+  "bootstrap_seed": 42,
+  "bootstrap_resamples": 1000,
+  "bootstrap_unit": "whole (functionality, templ_id) with all seven identities kept together",
+  "bootstrap_method": "non-stratified percentile intervals; empirical template resampling, not population coverage",
+  "matched_functions": [
+    "ident_neutral_nh",
+    "ident_pos_nh"
+  ],
+  "matched_templates": 45,
+  "matched_cases": 315,
+  "caveat": "All-zero empirical errors give degenerate [0,0] bootstrap intervals; they do not imply zero population risk.",
+  "environment": {
+    "python": "3.13.5",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3"
+  },
+  "input_hashes": {
+    "dehatebert_released_predictions.csv": {
+      "sha256": "f75bb66094131bae49128f3fce31a4bceda9de3c6f34819985f5a1e7d2110ce8",
+      "git_blob_sha1": "690571b3417a6a0a99f714ac6a8cd0248f4c3959"
+    },
+    "dehatebert_finetuned_predictions.csv": {
+      "sha256": "59c3e10d0041b86a20ec21947391ab5e958c255c3fc335e38f138a0635015de5",
+      "git_blob_sha1": "ae68fec5573e6a1dabc903c9a1707ae883ee05fb"
+    }
+  },
+  "verification_checks": [
+    "released: unique IDs, 3728 cases, legal labels/scores, threshold agreement, and saved overall metrics verified",
+    "finetuned: unique IDs, 3728 cases, legal labels/scores, threshold agreement, and saved overall metrics verified",
+    "One-to-one paired join preserves all case labels and metadata across the two conditions",
+    "Matched subset has 315 cases across 45 complete seven-group templates; equal template weighting used",
+    "Paired bootstrap uses the same sampled template indices for all identities and both conditions",
+    "Class denominators and transition totals reconcile with overall metrics"
+  ],
+  "unchanged": "original predictions, labels, training settings, main threshold and Update 1 model experiment"
+}

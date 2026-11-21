@@ -1,81 +1,62 @@
 # Evaluating False Positives in AI Hate-Speech Detection
 Jaida Calvin — Natural Language Processing, Purdue University Fort Wayne, Fall 2026.
 
-## Project Update 1 status
-**One real before/after fine-tuning experiment is complete.** DeHateBERT-English was evaluated in its released state, fine-tuned for two epochs on HateXplain, and evaluated again on all 3,728 HateCheck cases. The executed notebook, predictions, training history, data audit, source hashes, model revision, environment and settings are saved here. CardiffNLP Twitter-RoBERTa has NOT been run; the second-model notebook cell remains unexecuted.
+## Project Update 2 status
+One model-training experiment is complete: DeHateBERT-English was evaluated before and after two epochs of continued full-parameter fine-tuning on HateXplain. Update 2 adds **new analyses of that saved run**, not a second training experiment.
 
-The run completed on October 30, 2026 in America/Indiana/Indianapolis. Its saved UTC completion time is October 31, 2026, 02:13:25; these refer to the same run.
+The report, executed analysis notebook, reproducible analysis code, tables, and audit records are in [`update2/`](update2/README.md). Original Update 1 predictions, source code, settings, and executed notebook remain unchanged in their existing locations.
 
-## Main measured results
-All rates below are percentages; macro-F1 is on a 0–1 scale. Threshold 0.5 was fixed before the run.
-
-| HateCheck measure | Released | Further fine-tuned |
+### Original full-benchmark results (not a new run)
+| Measure | Released DeHateBERT | Further fine-tuned |
 |---|---:|---:|
-| Accuracy | 42.52% | 34.33% |
+| HateCheck accuracy | 42.52% | 34.33% |
 | Macro-F1 | 0.4176 | 0.2990 |
-| Hate precision | 78.38% | 75.33% |
-| Hate recall | 22.63% | 6.67% |
 | False-positive rate | 13.73% | 4.81% |
 | False-negative rate | 77.37% | 93.33% |
-| False-positive count | 160 | 56 |
-| False-negative count | 1,983 | 2,392 |
+| False positives | 160 | 56 |
+| False negatives | 1,983 | 2,392 |
 
-**Interpretation:** False alarms decreased, but 409 more hateful cases were missed. This run did NOT improve overall performance and does not establish bias mitigation. Causes remain unconfirmed. All per-case predictions and category/threshold tables are included; no scores for an unrun model are substituted or invented.
+### Newly completed analysis for Update 2
+- **Paired error transitions:** 128 original false positives corrected, 32 persist, and 24 new false positives introduced. Among hateful cases, 443 previously detected cases become missed; 34 previously missed cases become detected.
+- **Matched identities:** 45 shared neutral/positive sentence templates, seven groups, 315 cases. Before training, there are 10 false positives; after training, none. The largest released-model FPR is 7/45 (15.56%) for mentions of immigrants. This is not a population-level estimate or a causal claim.
+- **Template bootstrap:** 1,000 paired resamples, seed 42. The released max-minus-min group FPR gap is 15.56 percentage points, with empirical bootstrap interval [4.44, 26.67]. The fine-tuned interval is [0, 0] because all observed matched errors are zero; this does NOT establish zero population risk or absence of bias.
+- **Score shifts:** Hate scores decreased for 90.73% of non-hateful cases and 92.24% of hateful cases. The reduction is not selective to the non-hateful class.
 
-## Revised question
-How does continued supervised fine-tuning change false positives and false negatives on HateCheck relative to each model's released checkpoint? Which categories and, in future matched analyses, identity mentions remain difficult?
+**Conclusion:** Fewer false alarms did not yield overall improvement. New matched results must be interpreted alongside the much higher full-benchmark false-negative rate. New analyses do not isolate why the model's behavior changed.
 
-## Models and data
-- Completed: `Hate-speech-CNERG/dehatebert-mono-english`; full revision is in `results/dehatebert/run_config.json`.
-- Planned: `cardiffnlp/twitter-roberta-base-hate-latest`.
-- HateXplain uses original split IDs. Resolve the majority of ORIGINAL three-class annotations, then map `hatespeech` to 1 and `normal`/`offensive` to 0. Not-hate does not mean harmless. Rationales and target labels are not used for training.
-- Post-filtering counts: 15,344 training, 1,921 validation, 1,923 reserved test examples. The reserved source test split has NOT been evaluated.
-- HateCheck: 3,728 diagnostic evaluation cases (1,165 non-hateful; 2,563 hateful), not used for training/checkpoint selection. The main threshold is 0.5; 0.1–0.9 is a descriptive sensitivity grid, not test-set threshold optimization.
-- Original tokens are joined for the model input; Unicode/case/whitespace normalization is used only for duplicate/overlap checks.
-- Cardiff's published upstream training includes HateXplain. Further training is continued adaptation, not first exposure; independent unseen-data status of source validation/test data is not established. Within-project filtering cannot undo upstream exposure.
+## Completed training and data
+- Model: `Hate-speech-CNERG/dehatebert-mono-english`; exact revision in `results/dehatebert/run_config.json`.
+- Source training: original HateXplain splits, after majority-label resolution and overlap filtering. Binary mapping: hatespeech=1; normal/offensive=0. Not-hate does not mean harmless.
+- Counts: 15,344 training, 1,921 validation, 1,923 reserved source-test examples. The reserved source-test set has not been evaluated.
+- Evaluation: all 3,728 HateCheck cases, evaluation-only. Checkpoint selection uses HateXplain validation, not HateCheck.
+- Preset settings: two epochs, AdamW, learning rate 2e-5, batch size 8, accumulation 2, max length 128, seed 42. Full settings, model revision, source hashes and environment are saved.
+- Main decision threshold: 0.5. Original category and threshold analyses were completed in Update 1, not newly in Update 2.
 
-## Completed training
-All 167,357,954 model parameters were trainable. Two epochs; AdamW; learning rate 2e-5; batch size 8; accumulation 2; evaluation batch 16; maximum length 128; weight decay 0.01; linear schedule with 10% warmup; clipping 1.0; seed 42; mixed precision; gradient checkpointing; Tesla T4.
+## Still planned—not completed
+CardiffNLP released-versus-further-fine-tuned comparison; inverse-frequency-weighted loss comparison; repeated training seeds; manual raw-text review of up to 60 false positives. No second-model or ablation scores are invented. Cardiff's upstream training includes HateXplain, so it must not be described as previously unseen source data. Subsequent variants are exploratory because HateCheck has already been inspected.
 
-Epoch 1: training loss 0.4246, validation macro-F1 0.8229. Epoch 2: loss 0.3438, validation macro-F1 0.8256. Epoch 2 was selected using HateXplain validation, not HateCheck. No released-checkpoint validation baseline was recorded.
+## Reproduce the new analysis
+From the repository root:
 
-## Completed and pending analysis
-Completed: overall before/after evaluation, all 29 functionality tables, fixed nine-threshold grids, false-positive case-ID exports, and a consistency audit recomputing metrics from predictions.
+```bash
+python update2/analyze_update2.py --input-dir results --output-dir update2
+python update2/test_analysis.py
+```
 
-Pending: second-model experiment; matched identity-template comparisons and template bootstrap intervals; manual review of up to 60 false positives; repeated seeds; a controlled class-weighted-loss comparison. No independent loss-function or frozen-encoder ablation has been completed. Further experiments will be documented as follow-up work after observing this diagnostic benchmark.
+The analysis needs Python 3.10+, numpy, and pandas; it does not need a GPU. The executed `update2/Jaida_NLP_Update2_Analysis.ipynb` reproduces the CSV outputs and can also retrieve the four required small input files from the pinned Update 1 repository snapshot if they are not local. Input hashes are checked. The original training notebook remains `Jaida_NLP_Update1_FineTuning.ipynb`.
 
-Example category finding: neutral identity false positives changed from 1/126 to 0/126 and positive identity false positives from 9/189 to 0/189, but quoting-hate counterspeech errors increased from 16/173 to 22/173. These are category totals, not matched identity-group results.
+## Report and source attribution
+The Update 2 PDF and editable Overleaf source are in `update2/report/`. AI assistance was used for implementation, saved-output analysis, and writing. Software tests and recomputed tables are not additional neural training experiments. Raw offensive texts, credentials and large model weights are not included.
 
-## Verification and limitations
-`evidence/verification_audit.json` records 28 passed checks of saved outputs. The executed notebook's embedded source matches `project.py`. Overall metrics, all category rows, all threshold rows, and false-positive IDs agree with the saved per-case predictions. Split-ID, label-mapping, class-count and epoch-selection checks also pass. This does NOT independently rerun neural inference/training or certify every possible implementation detail.
-
-The 12 offline helper tests were re-run successfully; `evidence/offline_tests_rechecked.txt` contains synthetic-fixture software checks, NOT an additional model experiment. Its toy scores must not be reported as research results.
-
-Only one seed/model is complete. A nondeterministic-attention warning was logged; exact bitwise reproduction is not guaranteed. No confidence intervals or significance claims are available. These are constructed benchmark results, not estimates of platform-wide error or proof of discrimination. Source-domain validation and diagnostic benchmark scores measure different things.
-
-## Reproducing and viewing the notebook
-`Jaida_NLP_Update1_FineTuning.ipynb` is the executed notebook from the first run, renamed to replace the starter notebook. Open a copy in a fresh Colab GPU runtime for a new reproduction. Its saved outputs already document this run; rerunning is not required just to view them. Running from a fresh environment retrains from the pinned released checkpoint only if the accompanying saved lock files are copied into the working results directory first; otherwise the code resolves the current revision. Use the recorded versions/revisions for strict comparisons.
-
-The local fine-tuned checkpoint weights are not in this small export. Keep the active Colab checkpoint or save it separately for reuse; weights should not be uploaded through this repository's normal browser flow. Code implementation and paper preparation used AI assistance.
-
-## Repository contents
-- `project.py`: exact source exported by the completed run.
-- `Jaida_NLP_Update1_FineTuning.ipynb`: executed notebook with its original outputs.
-- `results/`: measured scores, predictions, data IDs, provenance, and training logs.
-- `evidence/`: post-run verification and helper-test evidence, plus the unedited original generated summary.
-- `tests/` and `requirements.txt`: starter tests and dependencies already in the repository.
-
-The original generated results summary contained stale wording about repository publication. `results/results_for_report.md` was updated for status clarity without changing numeric results; the original is preserved in `evidence/original_results_for_report.md`.
-
-## Sources and responsible sharing
+Research resources:
 - Röttger et al. (2021), HateCheck: https://aclanthology.org/2021.acl-long.4/
 - HateCheck data: https://github.com/paul-rottger/hatecheck-data
 - Mathew et al. (2021), HateXplain: https://doi.org/10.1609/aaai.v35i17.17745
-- HateXplain original data/splits: https://github.com/hate-alert/HateXplain
+- HateXplain data: https://github.com/hate-alert/HateXplain
 - Aluru et al. (2020): https://arxiv.org/abs/2004.06465
 - Antypas and Camacho-Collados (2023): https://aclanthology.org/2023.woah-1.25/
 - Sap et al. (2019): https://aclanthology.org/P19-1163/
 - DeHateBERT model card: https://huggingface.co/Hate-speech-CNERG/dehatebert-mono-english
 - Cardiff model card: https://huggingface.co/cardiffnlp/twitter-roberta-base-hate-latest
 
-Do not upload credentials, raw cached text, private notes, or large model weights. Review source licenses before redistributing resources. Exports contain IDs, labels and predictions rather than raw offensive text; upstream HateCheck content remains attributed to its creators. Sources support background/method descriptions; this project's reported results come from the saved Colab run.
+The sources support background and resource descriptions. Project numbers are computed from the saved Colab predictions, not taken from those publications.

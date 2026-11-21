@@ -1,0 +1,10 @@
+test_all_negative_predictions (__main__.AnalysisTests.test_all_negative_predictions) ... ok
+test_confusion_counts (__main__.AnalysisTests.test_confusion_counts) ... ok
+test_group_names (__main__.AnalysisTests.test_group_names) ... ok
+test_perfect_predictions (__main__.AnalysisTests.test_perfect_predictions) ... ok
+test_rejected_condition (__main__.AnalysisTests.test_rejected_condition) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+OK

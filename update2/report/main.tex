@@ -1,0 +1,131 @@
+\documentclass[11pt]{article}
+\usepackage[preprint]{acl}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{xurl}
+\urlstyle{same}
+\hypersetup{pdftitle={NLP Project Update 2},pdfauthor={Jaida Calvin}}
+\title{Evaluating False Positives in AI Hate-Speech Detection:\\Identity Mentions and Context}
+\author{Jaida Calvin \\
+Purdue University Fort Wayne \\
+Natural Language Processing --- Fall 2026 \\
+Project Update 2}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+This project studies false positives and missed hate speech before and after continued model fine-tuning. Update 1 completed a two-epoch DeHateBERT experiment using HateXplain for training and HateCheck for evaluation. This update adds paired error-transition analysis, matched identity comparisons, template-bootstrap intervals, and score-shift analysis of that run's saved predictions. On 45 matched templates covering seven groups, false positives decrease from 10 to zero. However, across the full benchmark, training loses 443 previously detected hateful cases and recovers only 34 missed cases. Lower false-positive rates therefore do not establish overall improvement or bias mitigation. The second classifier and controlled training ablations remain planned; no additional neural training run is claimed.
+\end{abstract}
+
+\section{Introduction}
+A hate-speech classifier should distinguish an attack on an identity group from a neutral mention, a positive statement, or speech opposing hate. An aggregate performance score may conceal these contextual weaknesses, motivating functional tests such as HateCheck \citep{rottger2021hatecheck}. Incorrectly flagging non-hateful text and failing to detect hateful text are different errors; reducing one does not necessarily reduce the other.
+
+The project asks how continued supervised fine-tuning changes these errors relative to the same model's released checkpoint. Following proposal feedback, the method now updates all model parameters rather than only evaluating existing classifiers. The October 30 experiment reported in Update 1 lowered the false-positive rate (FPR) but sharply increased the false-negative rate (FNR).
+
+Update 2 investigates where those changes occurred: Which individual errors were corrected or introduced? Do group differences persist when sentence templates are matched? Do hate scores decrease only for non-hateful text or for both classes? The contribution is a reproducible diagnostic study, not a new model architecture. The new progress consists of analysis of existing predictions and expanded research documentation, not a second training experiment.
+
+\section{Related Work}
+\textbf{Functional evaluation.} \citet{rottger2021hatecheck} introduce 29 functional tests that probe hate-speech detection beyond aggregate held-out scores. Their diagnostic approach motivates separating identity mentions, counterspeech, and other linguistic categories. This project extends its earlier category totals with matched templates and within-case changes across model versions.
+
+\textbf{Bias and interpretation.} \citet{sap2019risk} show that annotation practices and dialect can contribute to racial bias in hate-speech detection. Their findings motivate examining error distributions, but this project addresses a different measurement: identities mentioned in constructed test sentences. It neither infers an author's race or dialect nor measures discrimination against actual platform users. A smaller benchmark group gap is not sufficient evidence of fairness.
+
+\textbf{Training resources and transfer.} HateXplain provides hate, offensive, and normal labels, target annotations, and human rationales \citep{mathew2021hatexplain}. Here only the classification labels supervise training; rationales are not features or explanation targets. DeHateBERT's English checkpoint is based on multilingual BERT \citep{aluru2020deep,hatealertcard}. \citet{antypas2023robust} study cross-dataset generalization and combined training data, motivating the planned Cardiff Twitter-RoBERTa comparison \citep{cardiffcard}. Unlike that study's broad comparison, this project currently measures one checkpoint's continued adaptation and its functional error tradeoffs. Cardiff's upstream training includes HateXplain; its future run must be described as continued adaptation, not first exposure to the dataset.
+
+\section{Methodology}
+\textbf{Training procedure.} Original three-class majority labels are resolved before binary conversion: \texttt{hatespeech} maps to 1; \texttt{normal} and \texttt{offensive} map to 0. Thus, not-hate does not mean harmless. The implementation removes conflicting and duplicate texts and checks cross-split overlap, preserving HateCheck, then test, validation, and training cases. Normalization is used only for overlap checks, not to replace model inputs.
+
+The released checkpoint supplies the baseline. Continued training updates the encoder and classifier using cross-entropy loss and AdamW. The trained epoch with the highest HateXplain validation macro-F1 is selected. HateCheck is excluded from gradient updates and checkpoint selection. Both versions use a fixed main decision threshold of 0.5.
+
+\textbf{New diagnostic procedure.} Predictions are joined one-to-one by case ID, checking identical labels and metadata. Changes are classified as corrected errors, newly introduced errors, or unchanged decisions. Neutral and positive identity cases are restricted to templates present for all seven groups. Each template receives equal weight, averaging within a template--group cell if necessary. The matched FPR gap is the largest minus smallest group FPR. A paired percentile bootstrap resamples whole templates 1,000 times with seed 42, keeping all identities and both model conditions together. Separately, score changes are summarized within each gold class. These are post-hoc analyses, not new training ablations.
+
+\section{Experiments / Experimental Setup}
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrrr}
+\toprule
+Split & Total & Not-hate & Hate \\
+\midrule
+HateXplain train & 15,344 & 10,601 & 4,743 \\
+HateXplain validation & 1,921 & 1,328 & 593 \\
+HateXplain test & 1,923 & 1,329 & 594 \\
+HateCheck evaluation & 3,728 & 1,165 & 2,563 \\
+\bottomrule
+\end{tabular}
+\caption{Recorded post-filtering sizes. The source test split remains reserved and unevaluated.}
+\label{tab:data}
+\end{table}
+Table~\ref{tab:data} gives the saved split sizes. All 3,728 HateCheck cases are retained; 315 neutral/positive cases form 45 complete matched templates (18 neutral, 27 positive), each with seven identities.
+
+The completed DeHateBERT run uses revision \texttt{25d0e4d...}, with 167,357,954 trainable parameters. Settings are two epochs, learning rate $2\times10^{-5}$, batch size 8, accumulation 2, maximum length 128, weight decay 0.01, 10\% linear warmup, gradient clipping 1.0, and seed 42. Training used mixed precision and gradient checkpointing on a Tesla T4. Epoch 2 was selected with validation macro-F1 0.8256 versus 0.8229 for epoch 1. No HateCheck case was truncated. Source revisions, label mappings, settings, and environment details are preserved in the repository.
+
+With hate as the positive class, $\mathrm{FPR}=FP/(FP+TN)$ and $\mathrm{FNR}=FN/(FN+TP)$. Accuracy measures all correct predictions; precision measures the fraction of flagged cases that are hateful; recall measures the fraction of hateful cases detected. Macro-F1 averages the two class-specific precision--recall harmonic means. Bootstrap intervals describe variation over the observed templates, not platform-wide uncertainty or variation across training seeds.
+
+\section{Results and Progress Since Update 1}
+\subsection{Current model results: unchanged}
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrr}
+\toprule
+HateCheck measure & Released & Fine-tuned \\
+\midrule
+Accuracy (\%) & 42.52 & 34.33 \\
+Macro-F1 & 0.4176 & 0.2990 \\
+FPR (\%) & 13.73 & 4.81 \\
+FNR (\%) & 77.37 & 93.33 \\
+False positives & 160 & 56 \\
+False negatives & 1,983 & 2,392 \\
+\bottomrule
+\end{tabular}
+\caption{The Update 1 experiment, recomputed from saved predictions; these are not results of a new run.}
+\label{tab:overall}
+\end{table}
+Table~\ref{tab:overall} retains the first experiment as context. Fewer false alarms accompany more missed hate and lower macro-F1. Update 1 already reported category totals and a fixed 0.1--0.9 threshold grid. Those analyses are not presented as new progress here. The following paired and matched analyses are newly completed.
+
+\subsection{New: individual error transitions}
+Of 160 original false positives, 128 are corrected and 32 persist; 24 previously correct non-hateful cases become false positives. Thus, the net decrease of 104 hides newly introduced errors. Among hateful cases, 443 of the original 580 detections are lost, while only 34 of 1,983 missed cases are recovered. Another 137 remain correctly detected and 1,949 remain missed. This reconciles the 409-case net increase in false negatives.
+
+Quoting-hate counterspeech illustrates uneven changes: nine original false positives are corrected, but 15 new errors are introduced, changing its total from 16 to 22 out of 173. The analysis uses the existing functionality labels; it is not a completed manual review of the raw text.
+
+\subsection{New: matched identity comparisons}
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrrr}
+\toprule
+Group mention & Before FP & Before FPR & After FP \\
+\midrule
+Women & 1 & 2.22\% & 0 \\
+Trans people & 1 & 2.22\% & 0 \\
+Gay people & 0 & 0.00\% & 0 \\
+Black people & 0 & 0.00\% & 0 \\
+Disabled people & 0 & 0.00\% & 0 \\
+Muslims & 1 & 2.22\% & 0 \\
+Immigrants & 7 & 15.56\% & 0 \\
+\bottomrule
+\end{tabular}
+\caption{New matched analysis: 45 cases per group on the same 45 templates; after-training FPR is 0\% for every group. Only neutral/positive statements are included.}
+\label{tab:groups}
+\end{table}
+Table~\ref{tab:groups} shows ten false positives before training and none afterward. The observed maximum-minus-minimum FPR gap decreases from 15.56 to 0 percentage points. Its released-model 95\% bootstrap interval is [4.44, 26.67] points. The after-training bootstrap is [0, 0] because all observed template errors are zero; this degeneracy does not establish zero population risk. The narrow matched subset excludes counterspeech and other non-hateful categories. Together with the full benchmark's high FNR, these results do not establish that the model became unbiased.
+
+\subsection{New: hate-score shifts}
+Hate scores decrease for 1,057/1,165 non-hateful cases (90.73\%) and 2,364/2,563 hateful cases (92.24\%). The median score changes from 0.0524 to 0.0130 for non-hateful cases and from 0.0820 to 0.0157 for hateful cases. The shift affects both classes, consistent with less frequent hate predictions rather than a selective correction of false alarms. This is a descriptive finding, not evidence identifying a causal mechanism or measuring probability calibration.
+
+\section{Unsuccessful Approaches, Limitations, and Next Steps}
+\textbf{What did not work.} The first two-epoch fine-tuning configuration did not improve overall HateCheck performance. The earlier threshold analysis also failed to resolve the tradeoff: at threshold 0.1, the fine-tuned model still missed 78.62\% of hateful cases while flagging 17.60\% of non-hateful cases. No cutoff is selected as optimal using this benchmark. Dataset definitions, class balance, and domain differences are hypotheses, not established explanations.
+
+\textbf{Remaining limits.} Only one model and training seed are complete. No new weights were trained for this update. Upstream exposure to training resources is not fully established; overlap filtering cannot remove prior exposure. Empirical bootstrap intervals do not capture model-training uncertainty. Repeated inspection makes subsequent variants exploratory. Results concern constructed English tests, not a deployed platform. Raw-text manual review remains unfinished.
+
+\textbf{Upcoming results and ablations.} Next, evaluate the released and further fine-tuned Cardiff classifier on the same benchmark. Then compare unweighted against inverse-frequency-weighted cross-entropy with splits and other settings held fixed, selecting checkpoints only on validation. This loss comparison, repeated-seed experiments, and a review of up to 60 false positives are planned, not completed. No frozen-encoder ablation is claimed. Additional datasets would be needed for an untouched confirmatory evaluation of changes motivated by HateCheck.
+
+\textbf{Progress and artifacts.} New outputs include paired case/category transitions, matched template matrices, bootstrap group rates/gaps, score-shift summaries, and an executable analysis script. Original predictions and metrics remain unchanged. AI assistance was used for code, analysis, and writing; no additional human annotation or neural run is represented. Repository: \url{https://github.com/JaiMayrie/nlp-hate-speech-false-positives}. The accompanying \texttt{update2/} package contains this update's reproducible analysis artifacts.
+
+\clearpage
+\input{references}
+\end{document}

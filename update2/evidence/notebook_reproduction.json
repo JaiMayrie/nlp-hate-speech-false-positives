@@ -1,0 +1,14 @@
+{
+  "notebook_analysis_executed": true,
+  "analysis_cells_executed": 4,
+  "optional_download_cell_executed": false,
+  "csv_outputs_identical_to_script_run": true,
+  "csv_files_compared": 11,
+  "model_training_performed": false,
+  "input_hashes": {
+    "dehatebert_released_predictions.csv": "f75bb66094131bae49128f3fce31a4bceda9de3c6f34819985f5a1e7d2110ce8",
+    "dehatebert_released_metrics.json": "dcccce6b0ead1e462bf1891325058ebfa28203cea823bb7ab3d9363306491a07",
+    "dehatebert_finetuned_predictions.csv": "59c3e10d0041b86a20ec21947391ab5e958c255c3fc335e38f138a0635015de5",
+    "dehatebert_finetuned_metrics.json": "532ffdc5e894d6a97b2fc9f28c976ae8feb619d366e77d7eca4a072dbd661bf0"
+  }
+}
